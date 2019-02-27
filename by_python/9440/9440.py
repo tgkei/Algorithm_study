@@ -64,6 +64,7 @@ while(1):
                 counter[key] -= 1
     
     print(num_1+num_2)
+
     
     num_1 = 0
     num_2 = 0
