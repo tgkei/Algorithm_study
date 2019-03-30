@@ -1,4 +1,4 @@
-cache = [[-1 for _ in range(30)]for _ in range(30)]
+"""cache = [[-1 for _ in range(30)]for _ in range(30)]
 
 def find(n, m):
     if cache[n][m] != -1:
@@ -18,4 +18,6 @@ for _ in range(int(input())):
     
     result = find(n, m)
 
-    print(result)
+    print(result)"""
+
+    from itertools import combinations

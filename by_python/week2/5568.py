@@ -34,7 +34,9 @@ def choose (myList, to_go):
             result.append(res_num)
             picked.pop()
         return
-
+"""
+나도 모르게 11장에서 사용되는 조합 탐색을 조졌네 그래
+"""
     for i, num in enumerate(myList):
         picked.append(num)
         del myList[i]
