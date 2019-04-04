@@ -1,5 +1,5 @@
 """
-방법 1
+방법 # 1
 """
 
 for j in range(int(input())):
@@ -31,10 +31,11 @@ for j in range(int(input())):
     while d < score:
         if dic[-1] ==0:
             dic.pop()
-        result +=1
-        score -= (2**(len(dic)-2))
-        dic[-1] -= 1
-        dic[-2] += 1
+        else:
+            result +=1
+            score -= (2**(len(dic)-2))
+            dic[-1] -= 1
+            dic[-2] += 1
 
     print("Case #{}: {}".format(j+1,result))
 
