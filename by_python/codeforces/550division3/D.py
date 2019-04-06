@@ -20,14 +20,12 @@ for i, number in enumerate(numbers):
     temp = mv_j
     while temp > j:
         result.append("1 "+str(temp-1)+" "+str(temp))
-        #print("1 {} {}".format(mv_j, j))
         temp -= 1
     else:
         j = i+2
 j = n
 while j > mv_j:
     result.append("2 "+str(j)+" "+str(j-1))
-    #print("2 {} {}".format(j, j-1))
     j-=1
 print(len(result))
 print("\n".join(result))
