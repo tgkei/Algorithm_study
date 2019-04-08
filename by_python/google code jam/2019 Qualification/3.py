@@ -1,22 +1,42 @@
+import sys
 
+def gcd(m,n):
+    while True:
+        if n > m :
+            m, n = n, m
+        r = m%n
+        if (r ==0):
+             return n
+        else:
+            m = n
+            n = r
 
 for C in range(int(input())):
     result =[]
     input()
-    i = 1
-    #L = list(map(int, input().split()))
-    L = list(input().split())
-    prime_num1 = 0
-    while True:
+    L = list(map(int, sys.stdin.readline().split()))
+    
+    i = 0
+    while (L[i]==L[i+1]):
         i+=1
-        temp = int(L[0])
-        if temp % i ==0:
-            prime_num1= i
-            break
-    result.append(prime_num1)
-    for l in L:
-        prime_num1 = int(l)//prime_num1
-        result.append(prime_num1)
+
+    temp = []
+    prime_num = gcd(L[i],L[i+1])
+    temp.append(prime_num)
+    temp_prime_num = L[i]//prime_num    
+    temp.append(temp_prime_num)
+    
+    for j in reversed(range(i)):
+        temp_prime_num = L[j]//temp_prime_num
+        temp.append(temp_prime_num)
+    while temp:
+        result.append(temp.pop())
+    
+    for l in L[i+1:]:
+        prime_num = l//prime_num
+        result.append(prime_num)
+    L = None
+
     result2 = set(result)
     result2 = sorted(result2)
     result2 = iter(result2)
@@ -47,6 +67,7 @@ for C in range(int(input())):
     dic[next(result2)] = 'X'
     dic[next(result2)] = 'Y'
     dic[next(result2)] = 'Z'
+    result2 =None
     ans =[]
     for res in result:
         ans.append(dic[res])

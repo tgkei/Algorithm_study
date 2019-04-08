@@ -28,15 +28,14 @@ for _ in range(int(input())):
         maximum = temp - (32*th)
         test[temp] = False
 
-    result = ""
+    result = []
 
     for i,t in enumerate(test):
         if t:
-            result += (str(i))
-            result += " "
-            if len(result) == (2*B):
+            result.append(str(i))
+            if len(result) == B:
                 break
 
-    print(result)
+    print(" ".join(result))
     sys.stdout.flush()
     input()
