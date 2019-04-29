@@ -26,4 +26,4 @@ for T in range(int(input())):
     
     result = min(cache)
 
-    print("Case #{}: {}".format(T+1, result))
+    print("Case #{}: {}".format(T+1, result))    
