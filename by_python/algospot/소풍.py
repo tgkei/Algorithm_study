@@ -1,39 +1,33 @@
-is_friend = [[False for _ in range(10)] for _ in range(10)]
-
-def find_friend(friends,student):
-    small = -1
-    for i in range(student):
-        if friends[i]:
-            small = i
+def solve(taken):
+    global friends
+    global n
+    first = -1
+    for idx,i in enumerate(taken):
+        if not i:
+            first = idx
             break
-    else:
+    if first == -1:
         return 1
-    res = 0
-    small2 = small +1
-    while small2 < student:
-        if friends[small2] and is_friend[small][small2]:
-            friends[small] = False
-            friends[small2] = False
-            res += find_friend(friends, student)
-            friends[small] = friends[small2] = True
-        small2 += 1 
-    return res
+    
+    ret = 0
+    i = first+1
+    while i < n:
+        if not taken[i] and friends[first][i]:
+            taken[first] = taken[i] = True
+            ret += solve(taken)
+            taken[first] = taken[i] = False
+        i+=1
+    return ret
 
 for _ in range(int(input())):
-    student, _ = map(int, input().split())
-    friends = list(map(int, input().split()))
-    index = 0
-    while index < len(friends):
-        a = friends[index]
-        b = friends[index+1]
-        index += 2
-        is_friend[a][b] = is_friend[b][a] = True
-    friends = [True for _ in range(student)]
-    res = 0
-    a ,b = None, None
-    res = 0
-    res = find_friend(friends, student)
+    n, m = map(int,input().split())
+    
+    taken = [False for _ in range(n)]
+    friends = [[False for _ in range(n)] for _ in range(n)]
 
-    print(res)
+    nums = [*map(int,input().split())]
 
-    is_friend = [[False for _ in range(10)] for _ in range(10)]
+    for i, j in zip(nums[::2],nums[1::2]):
+        friends[i][j]=friends[j][i]= True
+
+    print(solve(taken))
