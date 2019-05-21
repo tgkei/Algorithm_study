@@ -1,4 +1,4 @@
-pos_shape = [
+"""pos_shape = [
               [[0,0],[0,1],[1,1]],
               [[0,0],[0,1],[-1,1]],
               [[0,0],[1,0],[1,1]],
@@ -54,4 +54,65 @@ for _ in range(int(input())):
             else:
                 board[i][j] = 0
     
-    print(cover())
+    print(cover())"""
+
+blocks =[
+    [[0,0],[1,0],[1,-1]],
+    [[0,0],[1,0],[1,1]],
+    [[0,0],[0,1],[1,1]],
+    [[0,0],[0,1],[1,0]]
+]
+
+def possible(x,y,i,j):
+    global board
+
+    temp_x = x + blocks[i][j][0]
+    temp_y = y + blocks[i][j][1]
+    if temp_x < 0 or temp_x>=row or temp_y <0 or temp_y >= col:
+        return False
+    if board[temp_x][temp_y] == ".":
+        board[temp_x][temp_y]="#"
+        return True
+    else:
+        return False
+
+def delete(x,y,i,j):
+    global board
+    temp_x = x + blocks[i][j][0]
+    temp_y = y + blocks[i][j][1]
+    board[temp_x][temp_y] = "."
+
+def solve():
+    global board
+    x = y = -1
+    for i in range(row):
+        for j in range(col):
+            if board[i][j] == ".":
+                x = i
+                y = j
+                break
+        if y != -1:
+            break
+    if x == -1:
+        return 1
+    
+    ret = 0
+    for i in range(4):
+        for j in range(3):
+            if not possible(x,y,i,j):
+                for k in range(j-1,-1,-1):
+                    delete(x,y,i,k)
+                break
+        else:
+            ret+=solve()
+            for j in range(3):
+                delete(x,y,i,j)
+    return ret
+
+for _ in range(int(input())):
+    row, col = map(int,input().split())
+    board = []
+    for _ in range(row):
+        board.append(list(input()))
+
+    print(solve())

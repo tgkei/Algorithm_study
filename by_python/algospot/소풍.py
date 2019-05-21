@@ -1,4 +1,4 @@
-def solve():
+"""def solve():
     global taken
 
      # 아직 뽑히지 않은 학생 중 인덱스가 가장 작은 학생을 뽑음
@@ -31,4 +31,34 @@ for _ in range(int(input())):
     for i, j in zip(nums[::2],nums[1::2]):
         friends[i][j]=friends[j][i]= True
 
-    print(solve())
+    print(solve())"""
+
+def pick():
+    global taken
+
+    first = -1
+    for idx, take in enumerate(taken):
+        if take:
+            continue
+        first = idx
+        break
+    if first == -1:
+        return 1
+    
+    ret = 0
+    for i in range(n):
+        if i != first and is_friend[i][first] and (not taken[i]):
+            taken[first] = taken[i] = True
+            ret += pick()
+            taken[first] = taken[i] = False
+    return ret
+
+for _ in range(int(input())):
+    n, m = map(int,input().split())
+    taken = [False for _ in range(n)]
+    is_friend = [[False for _ in range(n)] for _ in range(n)]
+    friend = list(map(int,input().split()))
+
+    for i1,i2 in zip(friend[::2],friend[1::2]):
+        is_friend[i1][i2] = is_friend[i2][i1] = True
+    print(pick())
