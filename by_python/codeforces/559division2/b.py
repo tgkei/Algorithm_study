@@ -1,14 +1,13 @@
 from math import inf
 
-n = int(input())-1
+n = int(input())
 
 nums = list(map(int,input().split()))
 
 minimum = inf
 
-for idx, num in enumerate(nums):
-    temp = inf
-    mo = max(idx-0,n-idx)
-    minimum = min(minimum,num // mo)
+for i in range(n):
+    bot= max(i-0,n-1-i)
+    minimum = min(minimum,nums[i]//bot)
 
 print(minimum)
