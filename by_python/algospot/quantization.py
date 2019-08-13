@@ -41,4 +41,5 @@ for _ in range(int(input())):
     nums.sort()
 
     init()
-    print(solve(0, 0))
+    ret = solve(0,0)
+    print(ret)

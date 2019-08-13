@@ -11,7 +11,7 @@ def solve(capacity, idx): #capacity만큼 남았고 현재 idx 일 때 가능한
 def recons(capacity, idx):
     global res
     if idx==n: return
-    if solve(capacity,idx) == solve(capacity,idx+1):
+    if solve(capacity,idx) == solve(capacity,idx+1): # 같다면 = 안 낀거
         recons(capacity, idx+1)
     else:
         res.append(idx)

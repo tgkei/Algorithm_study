@@ -3,7 +3,7 @@ def solve(cur, now):
     if cache[now][cur] != -1: return cache[now][cur]
     ret = 0.0
     for i in range(n):
-        if board[i][cur]:
+        if board[cur][i]:
             ret += (solve(i,now-1)/connected[i])
     cache[now][cur] = ret
     return ret
