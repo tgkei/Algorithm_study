@@ -1,3 +1,4 @@
+#https://www.acmicpc.net/problem/2042
 from math import ceil, log2
 
 def construct_tree(low,high, pos):
