@@ -6,16 +6,16 @@ def bfs(x,y):
     visited[x][y] = 0
     d = deque()
     d.append((x,y))
-    while d:
+    while d: # keep executing while queue is not empty
         cur_x,cur_y = d.popleft() 
         if cur_x == t_x and cur_y == t_y: return visited[cur_x][cur_y]
-        for move in moves:
-            for i in range(1,k+1):
+        for move in moves: # try all the possible ways to move
+            for i in range(1,k+1): # try all the possible length of move
                 next_x = cur_x+move[0]*i
                 next_y = cur_y+move[1]*i
                 if not (next_x<n and next_x>=0 and next_y<m and next_y>=0) or board[next_x][next_y] =='#': break
-                if visited[next_x][next_y] != -1 and visited[next_x][next_y]<=visited[cur_x][cur_y]: break
-                if visited[next_x][next_y] != -1: continue
+                if visited[next_x][next_y] != -1 and visited[next_x][next_y]==visited[cur_x][cur_y]+1: continue
+                if visited[next_x][next_y] != -1: break
                 visited[next_x][next_y] = visited[cur_x][cur_y] + 1 
                 d.append((next_x,next_y))
     return -1 
