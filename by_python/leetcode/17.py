@@ -1,4 +1,4 @@
-def combination(str_so_far,num):
+"""def combination(str_so_far,num):
     global res
     if num == total: 
         res.append(str_so_far)
@@ -13,4 +13,4 @@ digits = input()
 total = len(digits)
 res = []
 combination("",0)
-return res
+return res"""
