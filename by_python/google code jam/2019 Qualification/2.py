@@ -1,4 +1,4 @@
-for i in range(int(input())):
+"""for i in range(int(input())):
     N = int(input())
     paths = input()
     S_or_E =[]
@@ -50,4 +50,18 @@ for i in range(int(input())):
                         index += 1
                 else:
                     two = False
-    print("Case #{}: {}".format(i+1, my_path))
+    print("Case #{}: {}".format(i+1, my_path))"""
+
+for T in range(int(input())):
+    N = int(input())
+    P = input()
+    
+    answer = []
+    
+    for p in P:
+        if p == "S":
+            answer.append("E")
+        else:
+            answer.append("S")
+    answer = "".join(answer)
+    print("Case #{}: {}".format(T+1,answer))
