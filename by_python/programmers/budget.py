@@ -31,10 +31,7 @@ def solution(budgets, M):
             return budget
         else:
             return (M - prefix_sum)//(n-idx)
-<<<<<<< HEAD
     return budgets[-1]
-=======
-    return budgets[-1]"""
 
 """def solution(budgets, M):
     n = len(budgets)
@@ -85,7 +82,6 @@ def solution(budgets, M):
             answer = limit
             start = limit + 1
     return answer
->>>>>>> a1778e91caf7e3c5ee90000b2ebb7a7177e2a21f
 
 if __name__ == '__main__':
     budgets = [10, 10, 10, 10]
