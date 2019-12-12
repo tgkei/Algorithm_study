@@ -35,7 +35,7 @@ def solution(stones, k):
         if minimum > stone: minimum = stone
         if maximum < stone: maximum = stone
     
-    find_answer(minimum,maximum,k,answer, stones)
+    find_answer(minimum, maximum, k, answer, stones)
 
     return answer[0]
 
