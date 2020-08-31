@@ -1,6 +1,7 @@
-#5.longest palidrome
-#https://leetcode.com/problems/longest-palindromic-substring/
+# 5.longest palidrome
+# https://leetcode.com/problems/longest-palindromic-substring/
 
+"""
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         self.s = s
@@ -45,9 +46,43 @@ class Solution:
             else:
                 self.dp[start][end] = 0
                 return 0
+"""
+
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        n = len(s)
+        answer_i = 0
+        answer_j = 1
+
+        def is_palindrome(a):
+            for w1, w2 in zip(a, a[::-1]):
+                if w1 != w2:
+                    return False
+            return True
+
+        low = 1
+        high = n
+        while low <= high:
+            mid = (high+low)//2
+            is_palin = False
+            for i in range(n-mid+1):
+                print(s[i:i+mid])
+                if is_palindrome(s[i:i+mid]):
+                    is_palin = True
+                    if answer_j - answer_i < mid:
+                        answer_j = i+mid
+                        answer_i = i
+                if is_palin:
+                    low = mid+1
+                else:
+                    high = mid-1
+
+        return s[answer_i: answer_j]
+
 
 if __name__ == "__main__":
     sol = Solution()
-    string = "civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth"
+    string = "aba"
     print(sol.longestPalindrome(string))
-    print(sol.dp)
+
