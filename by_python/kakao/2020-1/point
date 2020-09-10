@@ -1,0 +1,7 @@
+1
+  1. make sub_word array using for (start, end, text_len)
+  2. have to add "" at the end of sub_word array
+  3. make cnt = 1 if word and comparison are diff
+
+3
+  1. rotate: list(zip(*original[::-1]))
