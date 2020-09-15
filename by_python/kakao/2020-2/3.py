@@ -59,19 +59,13 @@ class Tree:
                 for v in cur.values():
                     stack.append((v, q[1:]))
             elif "score" in cur:
-                # pprint(cur)
-                # print(q[0])
                 idx = find_ge(cur["index"], q[0])
-                # print(idx)
 
                 try:
                     ret += cur["score"][idx]
                 except:
                     continue
             else:
-                # pprint(cur)
-                # print(q[0])
-                # print("*"*10)
                 try:
                     stack.append((cur[q[0]], q[1:]))
                 except:
